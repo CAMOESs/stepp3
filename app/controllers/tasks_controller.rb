@@ -8,13 +8,6 @@ class TasksController < ApplicationController
       elsif params[:sort_priority] 
         @tasks = Task.prioritY.order(created_at: :desc).page params[:page]
 
-        
-        @priority1 = @tasks.all.where('priority = 0 and priority = 1 and priority = 2').order(deadline_on: :desc)
-        @priority2 = @tasks.all.where('priority = 1').order(deadline_on: :desc)
-        @priority3 = @tasks.all.where('priority = 2').order(deadline_on: :desc)
-        @priority1 + @priority2 + @priority3 
-        puts @priority1
-        
       elsif
         @sess = session[:search]
         @tasks = Task.all.order(created_at: :desc).page params[:page]
@@ -25,11 +18,11 @@ class TasksController < ApplicationController
          
           if @title != '' && @status !=''
             if @status == "未着手" && @title != nil
-              @tasks = Task.statuS(@title,0).page params[:page]
+              @tasks = Task.StatuS(@title,0).page params[:page]
             elsif @status == "着手中" && @title != nil
-              @tasks = Task.statuS(@title,1).page params[:page]
+              @tasks = Task.StatuS(@title,1).page params[:page]
             elsif @status == "完了" && @title != nil
-              @tasks = Task.statuS(@title,2).page params[:page]
+              @tasks = Task.StatuS(@title,2).page params[:page]
             end
             
           elsif (@status == '' && @title.is_a?(String))
