@@ -21,7 +21,7 @@
 
     <tr>
       <th> <%= t("activerecord.attributes.task.created_at") %> : </th>
-      <td><%= @task.created_at.in_time_zone('Asia/Tokyo').strftime("%Y-%m-%d %H:%M:%S %z")%></td>
+      <td><%= @task.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M")%></td>
       <td></td>
     </tr>
 
@@ -37,7 +37,11 @@
       <td></td>
     </tr>
 
-    
+    <tr>
+      <th>ステータス</th>
+      <td><%= @task.status%></td>
+      <td></td>
+    </tr>
 
     <tr>
       <td colspan="2" class="col-6"><a href="<%= edit_task_path(@task.id) %>" class="btn btn-success" id="edit-task"><%= t("listTask.el.edit") %></a>
