@@ -3,33 +3,63 @@ require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
 
     describe '一覧表示機能' do
-        context '一覧画面に遷移した場合' do
-            it '登録済みのタスク一覧が表示される' do
+        #context '一覧画面に遷移した場合' do
+        #    it '登録済みのタスク一覧が表示される' do
                 # テストで使用するためのタスクを登録
-                FactoryBot.create(:task)
+         #       FactoryBot.create(:task)
                 # タスク一覧画面に遷移
-                visit tasks_path
+          #      visit tasks_path
                 # visit（遷移）したpage（この場合、タスク一覧画面）に"書類作成"という文字列が、have_content（含まれていること）をexpect（確認・期待）する
-                expect(page).to have_content '書類作成'
+           #     expect(page).to have_content '書類作成'
                 # expectの結果が「真」であれば成功、「偽」であれば失敗としてテスト結果が出力される
+            #end
+        #end
+        describe 'ソート機能' do
+            context '「終了期限でソートする」というリンクをクリックした場合' do
+              it "終了期限昇順に並び替えられたタスク一覧が表示される" do
+                # allメソッドを使って複数のテストデータの並び順を確認する
+                
+              end
             end
-        end
+            context '「優先度でソートする」というリンクをクリックした場合' do
+              it "優先度の高い順に並び替えられたタスク一覧が表示される" do
+                # allメソッドを使って複数のテストデータの並び順を確認する
+              end
+            end
+          end
+          describe '検索機能' do
+            context 'タイトルであいまい検索をした場合' do
+              it "検索ワードを含むタスクのみ表示される" do
+                # toとnot_toのマッチャを使って表示されるものとされないものの両方を確認する
+              end
+            end
+            context 'ステータスで検索した場合' do
+              it "検索したステータスに一致するタスクのみ表示される" do
+                # toとnot_toのマッチャを使って表示されるものとされないものの両方を確認する
+              end
+            end
+            context 'タイトルとステータスで検索した場合' do
+              it "検索ワードをタイトルに含み、かつステータスに一致するタスクのみ表示される" do
+                # toとnot_toのマッチャを使って表示されるものとされないものの両方を確認する
+              end
+            end
+          end
     end
 
-    describe '登録機能' do
-        context 'タスクを登録した場合' do
-            it '登録したタスクが表示される' do
+    #describe '登録機能' do
+        #context 'タスクを登録した場合' do
+         #   it '登録したタスクが表示される' do
                 # テストで使用するためのタスクを登録
-                FactoryBot.create(:task,title: 'bien')
+          #      FactoryBot.create(:task,title: 'bien')
                 # タスク一覧画面に遷移
-                visit root_path
+          #      visit root_path
                 # visit（遷移）したpage（この場合、タスク一覧画面）に"書類作成"という文字列が、have_content（含まれていること）をexpect（確認・期待）する
-                expect(page).to have_content 'bien'
+          #      expect(page).to have_content 'bien'
                 # expectの結果が「真」であれば成功、「偽」であれば失敗としてテスト結果が出力される
-            end
-        end
-    end
-
+         #   end
+       # end
+  #  end
+=begin
     describe '詳細表示機能' do
         context '任意のタスク詳細画面に遷移した場合' do
             it 'そのタスクの内容が表示される' do
@@ -143,5 +173,5 @@ RSpec.describe 'タスク管理機能', type: :system do
          end
        end
      end
-
+=end
 end
