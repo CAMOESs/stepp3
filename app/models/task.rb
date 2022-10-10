@@ -9,9 +9,9 @@ class Task < ApplicationRecord
     enum status: {未着手:0, 着手中:1, 完了:2}
 
     scope :statuS, ->(title,n) { where("title LIKE ? AND status = ?",title,n)}
-    scope :title, ->(title) { where("title LIKE ? ",'%'+title+'%')}
-    scope :status, ->(status) { where("status = ?",status)}
-    scope :deadline_on, -> { all.order(deadline_on: :asc)}
-    scope :priority, -> { all.order(priority: :asc)}
+    scope :titlE, ->(title) { where("title LIKE ? ",'%'+title+'%')}
+    scope :statuS, ->(status) { where("status = ?",status)}
+    scope :deadline_oN, -> { all.order(deadline_on: :asc)}
+    scope :prioritY, -> { all.order(priority: :asc)}
     
 end
