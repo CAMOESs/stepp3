@@ -6,8 +6,15 @@ class TasksController < ApplicationController
       if params[:sort_deadline_on]
         @tasks = Task.deadline_oN.page params[:page]
       elsif params[:sort_priority] 
-        @tasks = Task.prioritY.order(created_at: :asc).page params[:page]
-
+        
+        @prop1 = Task.all.where(priority: 0)
+        @prop2 = Task.all.where(priority: 1)
+        @prop3 = Task.all.where(priority: 2)
+        if @prop3.count > 1 ||  @prop2.count > 1 ||  @prop1.count > 1
+          @tasks = Task.prioritY.order(created_at: :desc).page params[:page]
+        end
+        
+      
       elsif
         @sess = session[:search]
         @tasks = Task.all.order(created_at: :desc).page params[:page]
