@@ -12,6 +12,6 @@ class Task < ApplicationRecord
     scope :titlE, ->(title) { where("title LIKE ? ",'%'+title+'%')}
     scope :statuS, ->(status) { where("status = ?",status)}
     scope :deadline_oN, -> { all.order(deadline_on: :asc)}
-    scope :prioritY, -> { all.order(priority: :desc).order(created_at: :desc)}
+    scope :prioritY, -> { all.order(priority: :desc )}
     
 end
