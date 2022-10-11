@@ -6,7 +6,15 @@
 
                 <ul>
                     <% @task.errors.full_messages.each do |message|  %>
-                      
+                        <%if message.include?("優先度を") %>
+                        <% message = "優先度を入力してください" %>
+                        <% end %>
+                        <%if message.include?("終了期限を")  %>
+                            <% message = "終了期限を入力してください"%>
+                        <% end %>
+                        <%if message.include?("ステータスを")  %>
+                            <%message = "ステータスを入力してください"%>
+                        <% end %>
                         <li><%= message %></li>
                     <% end %>
                 </ul>
