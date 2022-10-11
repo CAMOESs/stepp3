@@ -3,7 +3,6 @@
 
     <% if @task.errors.any? %>
             <div class="btn btn-danger" id="error_explanation"> 
-
                 <ul>
                     <% @task.errors.full_messages.each do |message|  %>
                         <%if message.include?("優先度を") %>
