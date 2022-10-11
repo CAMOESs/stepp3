@@ -5,10 +5,13 @@ ja:
     attributes:
       task:
         title: タイトル
-        content: "内容"
+        content: 内容
         create: "登録する"
         back:  "戻る"
         created_at: "作成日時"
+        deadline_on: 終了期限を
+        priority: 優先度を
+        status: ステータスを
   global:
     menu:
       home: "タスク一覧"
