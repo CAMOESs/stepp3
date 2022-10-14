@@ -2,56 +2,56 @@
 <%content_for(:title,"Show Task Page") %>
 <div class="card ">
   <div class="card-header">
-  <h1><%= t("showTask.el.titlePage") %><h1>
+    <h1><%= t("showTask.el.titlePage") %><h1>
   </div>
   <div class="card-body">
-  <table class="table">
-  <tbody>
-    <tr>
-      <th scope="col"><%= Task.human_attribute_name(:title) %> : </th>
-      <td scope="col"><%= @task.title %></td>
-      <th></th>
-    </tr>
-  
-    <tr>
-      <th><%= Task.human_attribute_name(:content) %> : </th>
-      <td><%= @task.content %></td>
-      <td></td>
-    </tr>
+      <table class="table">
+        <tbody>
+            <tr>
+              <th scope="col"><%= Task.human_attribute_name(:title) %> : </th>
+              <td scope="col"><%= @task.title %></td>
+              <th></th>
+            </tr>
+          
+            <tr>
+              <th><%= Task.human_attribute_name(:content) %> : </th>
+              <td><%= @task.content %></td>
+              <td></td>
+            </tr>
 
-    <tr>
-      <th> <%= t("activerecord.attributes.task.created_at") %> : </th>
-      <td><%= @task.created_at.in_time_zone('Asia/Tokyo').strftime("%Y-%m-%d %H:%M:%S %z")%></td>
-      <td></td>
-    </tr>
+            <tr>
+              <th> <%= t("activerecord.attributes.task.created_at") %> : </th>
+              <td><%= @task.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M")%></td>
+              <td></td>
+            </tr>
 
-    <tr>
-      <th>終了期限</th>
-      <td><%= @task.deadline_on %></td>
-      <td></td>
-    </tr>
+            <tr>
+              <th>終了期限</th>
+              <td><%= @task.deadline_on %></td>
+              <td></td>
+            </tr>
 
-    <tr>
-      <th>優先度</th>
-      <td><%= @task.priority %></td>
-      <td></td>
-    </tr>
+            <tr>
+              <th>優先度</th>
+              <td><%= @task.priority %></td>
+              <td></td>
+            </tr>
 
-    <tr>
-      <th>ステータス</th>
-      <td><%= @task.status%></td>
-      <td></td>
-    </tr>
+            <tr>
+              <th>ステータス</th>
+              <td><%= @task.status %></td>
+              <td></td>
+            </tr>
 
-    <tr>
-      <td colspan="2" class="col-6"><a href="<%= edit_task_path(@task.id) %>" class="btn btn-success" id="edit-task"><%= t("listTask.el.edit") %></a>
-      <a class="btn btn-link " href="<%= tasks_path %>" id="back"><%= t("activerecord.attributes.task.back") %></a></td>
+            <tr>
+              <td colspan="2" class="col-6"><a href="<%= edit_task_path(@task.id) %>" class="btn btn-success edit-task" id="edit-task"><%= t("listTask.el.edit") %></a>
+              <a class="btn btn-link back" href="<%= tasks_path %>" id="back"><%= t("activerecord.attributes.task.back") %></a></td>
+              
+            </tr>
+        
+        </tbody>
       
-    </tr>
-   
-  </tbody>
-  
-</table>
+    </table>
   
   </div>
     

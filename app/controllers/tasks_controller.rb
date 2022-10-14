@@ -4,10 +4,17 @@ class TasksController < ApplicationController
   
     def index
       if params[:sort_deadline_on]
-        @tasks = Task.deadline_on.page params[:page]
-      elsif params[:sort_priority] && (conf != 1)
-        @tasks = Task.priority.page params[:page]
-          
+        @tasks = Task.deadline_oN.page params[:page]
+      elsif params[:sort_priority] 
+        
+        @prop1 = Task.all.where(priority: 0)
+        @prop2 = Task.all.where(priority: 1)
+        @prop3 = Task.all.where(priority: 2)
+        if @prop3.count > 1 ||  @prop2.count > 1 ||  @prop1.count > 1
+          @tasks = Task.prioritY.order(created_at: :desc).page params[:page]
+        end
+        
+      
       elsif
         @sess = session[:search]
         @tasks = Task.all.order(created_at: :desc).page params[:page]
@@ -18,22 +25,22 @@ class TasksController < ApplicationController
          
           if @title != '' && @status !=''
             if @status == "未着手" && @title != nil
-              @tasks = Task.statuS(@title,0).page params[:page]
+              @tasks = Task.StatuS(@title,0).page params[:page]
             elsif @status == "着手中" && @title != nil
-              @tasks = Task.statuS(@title,1).page params[:page]
+              @tasks = Task.StatuS(@title,1).page params[:page]
             elsif @status == "完了" && @title != nil
-              @tasks = Task.statuS(@title,2).page params[:page]
+              @tasks = Task.StatuS(@title,2).page params[:page]
             end
             
           elsif (@status == '' && @title.is_a?(String))
-            @tasks = Task.title(@title).page params[:page]
+            @tasks = Task.titlE(@title).page params[:page]
           elsif @title == '' && @status != nil
             if @status == "未着手" 
-              @tasks = Task.status(0).page params[:page]
+              @tasks = Task.statuS(0).page params[:page]
             elsif @status == "着手中"
-              @tasks = Task.status(1).page params[:page]
+              @tasks = Task.statuS(1).page params[:page]
             elsif @status == "完了"
-              @tasks = Task.status(2).page params[:page]
+              @tasks = Task.statuS(2).page params[:page]
             end
           
           end
