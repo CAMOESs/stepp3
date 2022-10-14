@@ -3,14 +3,14 @@ class TasksController < ApplicationController
     before_action :set_task, only: %i[ show edit update destroy ]
   
     def index
-      if params[:sort_deadline_on]
+      if params[:sort_deadline_on] && Task.all.count > 0
         @tasks = Task.deadline_oN.page params[:page]
-      elsif params[:sort_priority] 
+      elsif params[:sort_priority]  && Task.all.count > 0
         
         @prop1 = Task.all.where(priority: 0)
         @prop2 = Task.all.where(priority: 1)
         @prop3 = Task.all.where(priority: 2)
-        if @prop3.count > 1 ||  @prop2.count > 1 ||  @prop1.count > 1
+        if @prop3.count >= 1 ||  @prop2.count >= 1 ||  @prop1.count >= 1
           @tasks = Task.prioritY.order(created_at: :desc).page params[:page]
         end
         
